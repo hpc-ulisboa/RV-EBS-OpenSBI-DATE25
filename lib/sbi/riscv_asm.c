@@ -127,11 +127,14 @@ unsigned long csr_read_num(int csr_num)
 	switchcase_csr_read_4(CSR_MHPMCOUNTER4, ret)
 	switchcase_csr_read_8(CSR_MHPMCOUNTER8, ret)
 	switchcase_csr_read_16(CSR_MHPMCOUNTER16, ret)
+	switchcase_csr_read_32(CSR_MHPMTHRESHOLDCYCLE, ret)
 	switchcase_csr_read(CSR_MCOUNTINHIBIT, ret)
 	switchcase_csr_read(CSR_MHPMEVENT3, ret)
 	switchcase_csr_read_4(CSR_MHPMEVENT4, ret)
 	switchcase_csr_read_8(CSR_MHPMEVENT8, ret)
 	switchcase_csr_read_16(CSR_MHPMEVENT16, ret)
+	switchcase_csr_read(CSR_MHPM_MADDR, ret)
+	switchcase_csr_read(CSR_MHPM_EBS_CFG, ret)
 #if __riscv_xlen == 32
 	switchcase_csr_read(CSR_MCYCLEH, ret)
 	switchcase_csr_read(CSR_MINSTRETH, ret)
@@ -147,6 +150,7 @@ unsigned long csr_read_num(int csr_num)
 	switchcase_csr_read_4(CSR_MHPMEVENT4H, ret)
 	switchcase_csr_read_8(CSR_MHPMEVENT8H, ret)
 	switchcase_csr_read_16(CSR_MHPMEVENT16H, ret)
+	switchcase_csr_write_32(CSR_MHPMTHRESHOLDCYCLEH, ret)
 #endif
 
 	default:
@@ -199,6 +203,7 @@ void csr_write_num(int csr_num, unsigned long val)
 	switchcase_csr_write_4(CSR_MHPMCOUNTER4, val)
 	switchcase_csr_write_8(CSR_MHPMCOUNTER8, val)
 	switchcase_csr_write_16(CSR_MHPMCOUNTER16, val)
+	switchcase_csr_write_32(CSR_MHPMTHRESHOLDCYCLE, val)
 #if __riscv_xlen == 32
 	switchcase_csr_write(CSR_MCYCLEH, val)
 	switchcase_csr_write(CSR_MINSTRETH, val)
@@ -210,12 +215,15 @@ void csr_write_num(int csr_num, unsigned long val)
 	switchcase_csr_write_4(CSR_MHPMEVENT4H, val)
 	switchcase_csr_write_8(CSR_MHPMEVENT8H, val)
 	switchcase_csr_write_16(CSR_MHPMEVENT16H, val)
+	switchcase_csr_write_32(CSR_MHPMTHRESHOLDCYCLEH, val)
 #endif
 	switchcase_csr_write(CSR_MCOUNTINHIBIT, val)
 	switchcase_csr_write(CSR_MHPMEVENT3, val)
 	switchcase_csr_write_4(CSR_MHPMEVENT4, val)
 	switchcase_csr_write_8(CSR_MHPMEVENT8, val)
 	switchcase_csr_write_16(CSR_MHPMEVENT16, val)
+	switchcase_csr_write(CSR_MHPM_MADDR, val)
+	switchcase_csr_write(CSR_MHPM_EBS_CFG, val)
 
 	default:
 		sbi_panic("%s: Unknown CSR %#x", __func__, csr_num);

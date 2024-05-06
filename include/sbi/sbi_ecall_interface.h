@@ -29,6 +29,7 @@
 #define SBI_EXT_HSM				0x48534D
 #define SBI_EXT_SRST				0x53525354
 #define SBI_EXT_PMU				0x504D55
+#define SBI_EXT_EBS				0x08454253
 
 /* SBI function IDs for BASE extension*/
 #define SBI_EXT_BASE_GET_SPEC_VERSION		0x0
@@ -99,6 +100,18 @@
 #define SBI_EXT_PMU_COUNTER_START	0x3
 #define SBI_EXT_PMU_COUNTER_STOP	0x4
 #define SBI_EXT_PMU_COUNTER_FW_READ	0x5
+
+/* SBI function IDs for EBS extension */
+#define SBI_EXT_EBS_SET_EVENT	0x0
+#define SBI_EXT_EBS_SET_THRESHOLD	0x1
+#define SBI_EXT_EBS_SET_COUNTER	0x2
+#define SBI_EXT_EBS_SET_MADDR	0x3
+#define SBI_EXT_EBS_SET_CFG	0x4
+#define SBI_EXT_EBS_GET_EVENT	0x5
+#define SBI_EXT_EBS_GET_THRESHOLD	0x6
+#define SBI_EXT_EBS_GET_COUNTER	0x7
+#define SBI_EXT_EBS_GET_MADDR	0x8
+#define SBI_EXT_EBS_GET_CFG	0x9
 
 /** General pmu event codes specified in SBI PMU extension */
 enum sbi_pmu_hw_generic_events_t {
